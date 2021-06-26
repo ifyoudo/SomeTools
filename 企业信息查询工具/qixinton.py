@@ -30,7 +30,6 @@ def check_islogin():
 	try:
 		cookies=get_cookie()
 		res=requests.get(url,headers=headers,cookies=cookies,allow_redirects=False)
-		print(res.status_code)
 		if res.status_code == 302:
 			print('relogin...')
 			login=Login().save_cookies()
@@ -42,9 +41,6 @@ def check_islogin():
 	return islogin
 
 def get_data(keyword):
-	phone_list=[]
-	email_list=[]
-	gw=''
 	headers=Utils().baseheader()
 	headers.pop('X-Requested-With')
 	url=baseurl+'qxtsearch/?key={key}&typestr=0'.format(key=keyword)
